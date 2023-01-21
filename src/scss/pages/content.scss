@@ -1,0 +1,21 @@
+.start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20vh;
+
+  > :not(:last-child) {
+    margin-bottom: 36px;
+  }
+}
+.start__logo {
+
+}
+.start__description {
+  max-width: 630px;
+  width: 100%;
+  text-align: justify;
+}
+.start__btn {
+
+}
