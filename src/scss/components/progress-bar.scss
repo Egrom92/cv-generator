@@ -1,0 +1,15 @@
+.progress-bar {
+  position: relative;
+  width: 40%;
+  height: 3px;
+  background-color: rgba($white, .1);
+}
+.progress-bar__inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transition: all ease-out .3s;
+  width: 100px;
+  background-color: $green;
+}

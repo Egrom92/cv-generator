@@ -1,0 +1,21 @@
+.sticky-footer {
+  flex-grow: 1;
+}
+.footer {
+  padding: 10vh 5vw 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  background: rgb(50,66,91);
+  background: linear-gradient(180deg, rgba(50,66,91,0) 0%, rgba(22,29,40,0.23713235294117652) 16%, rgba(22,29,40,0.6264880952380952) 33%, rgba(22,29,40,1) 72%);
+  pointer-events: none;
+
+  .btn {
+    max-width: 150px;
+    pointer-events: auto;
+  }
+}

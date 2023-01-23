@@ -1,17 +1,27 @@
 import React from "react";
-import {ErrorMessage, Field} from "formik";
+import {ErrorMessage, Field, useField} from "formik";
 
 const Input = (props) => {
-  const {type = 'text', name, id, label} = props
+  const {type = 'text', name, id, label, startHelp, className, children, onChange, onBlur} = props
+  const CN = `field-wrap ${className ? className : ''}`
+
+  const [field] = useField(name);
+  const { value } = field;
+
   return (
-    <div className="field-wrap">
+    <div className={CN}>
       <Field type={type}
+             placeholder=' '
              name={name}
              id={id}
-             placeholder=' '
+             onChange={onChange}
+             onBlur={onBlur}
+             value={value || ''}
       />
+      {startHelp && <span className='startHelp'>{startHelp}</span>}
       <ErrorMessage name={name} render={msg => <div className='error'>{msg}</div>}/>
-      <label htmlFor={name}>{label}</label>
+      {label ? <label htmlFor={name}>{label}</label> : ''}
+      {children}
     </div>
   )
 

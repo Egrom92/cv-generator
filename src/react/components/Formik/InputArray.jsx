@@ -1,6 +1,6 @@
 import React from 'react';
 import {Btn, Input} from "../index";
-import {FieldArray} from "formik";
+import {ErrorMessage, Field, FieldArray} from "formik";
 import _ from 'lodash'
 
 const AddButton = ({onClick}) => <Btn className='input-button' onClick={onClick} text='+'/>;
@@ -12,31 +12,43 @@ const RemoveButton = ({onClick, disabled}) => (
   />);
 
 const InputArray = props => {
-  const {title, name, className} = props
+  const {type = 'text', name, id, label, startHelp, className, onChange, onBlur} = props
   const CN = `inputArray ${className ? className : ''}`
 
   return (
     <FieldArray name={name}>
       {
-        ({form}) => {
+        ({form, push, remove}) => {
           const {values, setFieldValue} = form;
-          const items = _.get(values, name);
+          const fields = _.get(values, name);
 
-          const handleAdd = () => setFieldValue(name, [...items, '']);
-          const handleRemove = (index) => setFieldValue(name, items.filter((_, i) => i !== index));
+          const handleAdd = () => setFieldValue(name, [...fields, '']);
+          const handleRemove = (index) => setFieldValue(name, fields?.filter((_, i) => i !== index));
 
 
           return (
             <div className={CN}>
-              {title ? <h4 className='field-array-title'>{title}</h4> : ''}
-              {
-                items.map((item, index) => (
-                  <Input key={index} type='text' name={`${name}[${index}]`}>
-                    <RemoveButton onClick={() => handleRemove(index)} disabled={items.length === 1}/>
-                    <AddButton onClick={handleAdd}/>
-                  </Input>
-                ))
-              }
+              {fields?.map((field, index) => {
+                  return (
+                    <div key={index} className='field-wrap'>
+                      <Field type={type}
+                             placeholder=' '
+                             name={`${name}[${index}]`}
+                             id={id}
+                             onChange={event => {
+                               setFieldValue(`${name}[${index}]`, event.target.value);
+                             }}
+                             onBlur={onBlur}
+                      />
+                      {startHelp && <span className='startHelp'>{startHelp}</span>}
+                      <ErrorMessage name={`fields[${index}]`} render={msg => <div className='error'>{msg}</div>}/>
+                      <RemoveButton onClick={() => handleRemove(index)} disabled={fields.length === 1}/>
+                      <AddButton onClick={handleAdd}/>
+                    </div>
+                  )
+                }
+              )}
+              {label ? <label htmlFor={name}>{label}</label> : ''}
             </div>
           )
         }

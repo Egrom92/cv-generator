@@ -1,4 +1,20 @@
-@import 'components/logo';
+@import './config';
+@import "./global";
+
+@import './components/btn';
+@import './components/logo';
+@import './components/resume';
+@import './components/navbar';
+@import './components/footer';
+@import './components/progress-bar';
+@import './components/form';
+
+
+
+@import "./steps/start";
+
+
+@import "./pages/content";
 
 
 

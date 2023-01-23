@@ -1,4 +1,4 @@
-import Content from './Content'
+import Start from './Start'
 
 
-export {Content}
+export {Start}

@@ -1,0 +1,146 @@
+.custom-form-wrap {
+  width: 100%;
+  padding-top: 50px;
+  overflow: scroll;
+  position: relative;
+  height: calc(100vh - 280px);
+  padding-bottom: 120px;
+
+}
+
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+
+  & > :not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  .inputArray {
+    position: relative;
+    & > :not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+
+    >  label {
+        transform: translateY(-32px);
+        font-size: 12px;
+        color: $green;
+        position: absolute;
+        top: 4px;
+        left: 15px;
+      }
+
+  }
+
+  .input-group-array {
+    position: relative;
+    padding-left: 20px;
+
+    & > :not(:last-child) {
+      margin-bottom: 40px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 100px;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      background-color: $green;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .input-group-array__actions {
+    display: flex;
+    max-width: 110px;
+  }
+}
+
+.field-array-title {
+  text-transform: none;
+  color: $green;
+  font-size: 16px;
+}
+
+.field-wrap {
+  display: flex;
+  position: relative;
+
+  label {
+    position: absolute;
+    left: 15px;
+    top: 4px;
+    transition: all ease-out 0.3s;
+    font-size: 15px;
+    pointer-events: none;
+  }
+
+  input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: 1px solid $green;
+    box-sizing: border-box;
+    color: $white;
+    padding: 10px 10px 10px 15px;
+
+
+    &:focus ~ label,
+    &:not(:placeholder-shown) ~ label {
+      transform: translateY(-32px);
+      font-size: 12px;
+      color: $green;
+    }
+  }
+
+  .error {
+    position: absolute;
+    right: 0;
+    color: $error;
+    font-size: 12px;
+    top: -27px;
+  }
+
+  .startHelp {
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    font-size: 16px;
+    display: none;
+  }
+
+  &.phoneInput > input {
+    &:focus ~ .startHelp,
+    &:not(:placeholder-shown) ~ .startHelp {
+      display: block;
+    }
+  }
+
+  .input-button {
+    max-width: 50px;
+  }
+}
+.date-picker-wrap {
+  display: flex;
+
+  .field-wrap {
+    width: 100%;
+
+    label {
+      left: 5px;
+    }
+  }
+
+  & > :not(:last-child) {
+    margin-right: 40px;
+  }
+}

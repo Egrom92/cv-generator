@@ -1,37 +1,50 @@
-import React from 'react';
-import {Document, Page, Text, View, StyleSheet, PDFViewer} from '@react-pdf/renderer';
+import React from 'react'
+import {Document, Page, PDFViewer, PDFDownloadLink} from '@react-pdf/renderer'
+import {RightSection, LeftSection} from './index'
+import styles from './styles'
 
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: 'row',
-    height: '500px',
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-  text: {
-    color: 'red'
-  }
-});
-const PDF = () => (
-  <PDFViewer
-    showToolbar={false}
-    style={{
-      height: '500px',
-      border: 'none'
-    }}
-  >
+
+import {useSelector} from "react-redux";
+
+
+const PDF = () => {
+  const {formInputs} = useSelector(state => state.step)
+
+
+  return (
+    <div style={{flexGrow: 1, height: '500px', width: '432px'}}>
+      <PDFViewer
+        showToolbar={false}
+        style={{
+          width: '100%',
+          height: '95%',
+        }}
+      >
+        <Template profile={formInputs.profile}
+                  educations={formInputs.educations}
+                  skills={formInputs.skills}
+                  works={formInputs.works}/>
+      </PDFViewer>
+      <PDFDownloadLink
+        document={<Template profile={formInputs.profile}/>}
+        fileName='CV.pdf'
+      >
+        {({loading}) => (loading ? 'Loading document...' : 'Download now!')}
+      </PDFDownloadLink>
+    </div>
+  )
+}
+
+const Template = ({profile, ...props}) => {
+  return (
     <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <Text>Section #1</Text>
-          <Text style={styles.text}>Section #2</Text>
-        </View>
+      <Page style={styles.page}>
+        <LeftSection profile={profile}/>
+        <RightSection {...props}/>
+        {profile.about ? <RightSection about={profile.about}/> : null}
       </Page>
     </Document>
-  </PDFViewer>
-);
+  )
+}
 
 export default PDF
