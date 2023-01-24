@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "./static/css/main.c5c7271c.css",
+    "main.js": "./static/js/main.8f2730d1.js",
+    "static/media/Inter-ExtraLight.woff": "./static/media/Inter-ExtraLight.5114637207c58c8f55be.woff",
+    "static/media/Inter-ExtraLight.woff2": "./static/media/Inter-ExtraLight.2fa884f3d7326c4b3f6b.woff2",
+    "index.html": "./index.html",
+    "main.c5c7271c.css.map": "./static/css/main.c5c7271c.css.map",
+    "main.8f2730d1.js.map": "./static/js/main.8f2730d1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c5c7271c.css",
+    "static/js/main.8f2730d1.js"
+  ]
+}
