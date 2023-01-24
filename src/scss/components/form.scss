@@ -101,6 +101,11 @@
       color: $green;
     }
   }
+  &.label-active label{
+    transform: translateY(-32px);
+    font-size: 12px;
+    color: $green;
+  }
 
   .error {
     position: absolute;
